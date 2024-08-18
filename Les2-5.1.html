@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 2.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Edu VIC WA NT Beginner, sans-serif;
+            color: #000;
+            background-color: #ffeeee;
+            text-align: center; 
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #welkom {
+            background-color: #fff;
+            font-size: 20px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 25px;
+            
+        }
+
+        #wistjedatje {
+            background-color: #fff;
+            font-size: 18px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 25px;
+            color: #333;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--HTML-->
+    <div id="welkom"></div> <!--Het <div> element waar de welkomstzin wordt weergegeven.-->
+    <p id="wistjedatje"></p> <!--Het <p> element waar het wist-je-datje wordt weergegeven.-->
+    
+
+    <!--Javascript-->
+    <script>
+        // Selecteer het juiste element om de welkomstzin weer te geven
+        const welkomElement = document.getElementById("welkom");
+
+        // Vraag de gebruiker om zijn naam en geboortejaar
+        const naam = prompt("Wat is je naam?");
+        const geboortejaar = parseInt(prompt("Wat is je geboortejaar?"));
+
+        // Bereken de leeftijd
+        const huidigJaar = new Date().getFullYear();
+        const leeftijd = huidigJaar - geboortejaar;
+
+        // Log waarden voor debugging
+        console.log("Geboortejaar ingevoerd:", geboortejaar); // Debugging: controleer de waarde van geboortejaar
+        console.log("Berekening leeftijd:", leeftijd); // Debugging: controleer de waarde van leeftijd
+
+        let welkomstzin; 
+
+        // Controleer of de gebruiker beide invoervelden heeft ingevuld
+        if (naam && geboortejaar && !isNaN(geboortejaar)) {
+            // Creëer de welkomstzin inclusief de leeftijd
+            welkomstzin = `Welkom, ${naam}! Je bent geboren in ${geboortejaar} en je bent ${leeftijd} jaar oud.`;
+        } else {
+            // Toon een foutmelding in het <div> element met id 'welkom'
+            welkomstzin = 'Welkom! Je hebt geen geldige naam of geboortedatum ingevoerd.';
+        }
+
+        // Toon de welkomstzin in het <div> element met id 'welkom'
+        welkomElement.textContent = welkomstzin;
+
+        // Bereken de lengte van de zin
+        const lengteZin = welkomstzin.length;
+        console.log("De lengte van de welkomstzin is: " + lengteZin + " tekens.");
+
+        // // Bepaal de positie van de eerste 'n' in de welkomstzin
+        const positieN = welkomstzin.indexOf('n');
+        
+        // Toon de positie in de console (0-gebaseerde index)
+        if (positieN !== -1) {
+            console.log(`De letter 'n' komt voor het eerst voor op positie: ${positieN}`);
+        } else {
+            console.log("De letter 'n' komt niet voor in de welkomstzin.");
+        }
+
+        // Voeg de ontbrekende definitie van de variabele isGeboortejaar1980 toe
+        const isGeboortejaar1980 = geboortejaar === 1980;
+
+        // Selecteer het element waar het wist-je-datje komt
+        const wistjedatjeElement = document.getElementById("wistjedatje");
+
+        if (isGeboortejaar1980) {
+        // De gebruiker is geboren in 1980
+        console.log("Je bent geboren in 1980.");
+        wistjedatjeElement.textContent = "Wist je dat de Rubik's kubus is uitgevonden in 1974, maar in 1980 een wereldwijd fenomeen werd?";
+        wistjedatjeElement.style.backgroundColor = '#fff'; // Houd het element wit als de gebruiker in 1980 is geboren
+
+        } else {
+        // De gebruiker is niet geboren in 1980
+        wistjedatjeElement.style.backgroundColor = '#ffeeee'; // Stel dezelfde achtergrondkleur in als de pagina
+        }
+
+    </script>
+
+</body>
+</html>
